@@ -156,6 +156,31 @@
       fill: currentColor;
     }
 
+    /* Small corner hints for what a tile offers (launch, GitHub, or both),
+       hidden while the tile itself is hovered or focused since the full
+       labels take over then. */
+    .tile-badges {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 6px;
+      color: var(--muted);
+      transition: opacity 120ms ease;
+      pointer-events: none;
+    }
+
+    .tile-badges svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+    }
+
+    .tile:hover .tile-badges,
+    .tile:focus-within .tile-badges {
+      opacity: 0;
+    }
+
     /* Phones: two tiles per row instead of one oversized column. */
     @media (max-width: 440px) {
       .tile {
@@ -167,6 +192,11 @@
     @media (hover: none) {
       .tile-action {
         opacity: 0.55;
+      }
+
+      /* the labels are already showing */
+      .tile-badges {
+        display: none;
       }
     }
   </style>
@@ -184,6 +214,7 @@
         <span class="tile-name">Tracker</span>
         <span class="tile-desc">Habits, goals &amp; budget</span>
       </div>
+      <span class="tile-badges" aria-hidden="true"><svg><use href="#icon-launch"/></svg></span>
       <a class="tile-action tile-launch" href="https://tracker.mattlove.dev" aria-label="Launch Tracker">
         <svg aria-hidden="true"><use href="#icon-launch"/></svg>
         Launch
@@ -194,6 +225,7 @@
         <span class="tile-name">OSRS Grind</span>
         <span class="tile-desc">OSRS goal tracker</span>
       </div>
+      <span class="tile-badges" aria-hidden="true"><svg><use href="#icon-launch"/></svg><svg><use href="#icon-github"/></svg></span>
       <a class="tile-action tile-launch" href="https://grind.mattlove.dev" aria-label="Launch OSRS Grind">
         <svg aria-hidden="true"><use href="#icon-launch"/></svg>
         Launch
@@ -208,6 +240,7 @@
         <span class="tile-name">Score</span>
         <span class="tile-desc">Cribbage &amp; dominoes</span>
       </div>
+      <span class="tile-badges" aria-hidden="true"><svg><use href="#icon-launch"/></svg><svg><use href="#icon-github"/></svg></span>
       <a class="tile-action tile-launch" href="https://score.mattlove.dev" aria-label="Launch Score">
         <svg aria-hidden="true"><use href="#icon-launch"/></svg>
         Launch
@@ -222,6 +255,7 @@
         <span class="tile-name">Crib</span>
         <span class="tile-desc">Cribbage hand analyzer</span>
       </div>
+      <span class="tile-badges" aria-hidden="true"><svg><use href="#icon-launch"/></svg><svg><use href="#icon-github"/></svg></span>
       <a class="tile-action tile-launch" href="https://mattlove.dev/crib/" aria-label="Launch Crib">
         <svg aria-hidden="true"><use href="#icon-launch"/></svg>
         Launch
@@ -236,6 +270,7 @@
         <span class="tile-name">Tools</span>
         <span class="tile-desc">Decoders, diffs &amp; JSON</span>
       </div>
+      <span class="tile-badges" aria-hidden="true"><svg><use href="#icon-launch"/></svg><svg><use href="#icon-github"/></svg></span>
       <a class="tile-action tile-launch" href="https://mattlove.dev/tools/" aria-label="Launch Tools">
         <svg aria-hidden="true"><use href="#icon-launch"/></svg>
         Launch
@@ -250,6 +285,7 @@
         <span class="tile-name">Word</span>
         <span class="tile-desc">Wordle helper</span>
       </div>
+      <span class="tile-badges" aria-hidden="true"><svg><use href="#icon-launch"/></svg><svg><use href="#icon-github"/></svg></span>
       <a class="tile-action tile-launch" href="https://mattlove.dev/word/" aria-label="Launch Word">
         <svg aria-hidden="true"><use href="#icon-launch"/></svg>
         Launch
@@ -264,6 +300,7 @@
         <span class="tile-name">Arduino</span>
         <span class="tile-desc">LED programs</span>
       </div>
+      <span class="tile-badges" aria-hidden="true"><svg><use href="#icon-github"/></svg></span>
       <a class="tile-action tile-github" href="https://github.com/mattlovedev/arduino" aria-label="Arduino on GitHub">
         <svg aria-hidden="true"><use href="#icon-github"/></svg>
         GitHub
