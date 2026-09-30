@@ -1,0 +1,429 @@
+:root {
+  --bg: #f6f7f9;
+  --text: #1b1f24;
+  --muted: #5c6570;
+  --tile-bg: #ffffff;
+  --tile-border: #dde1e6;
+  --overlay: rgba(27, 31, 36, 0.88);
+  --overlay-text: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111418;
+    --text: #e6e9ed;
+    --muted: #9aa3ad;
+    --tile-bg: #1a1f25;
+    --tile-border: #2c333b;
+    --overlay: rgba(230, 233, 237, 0.92);
+    --overlay-text: #111418;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 24px 48px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Same header on every page; the current page's link is marked with
+   aria-current so it can be highlighted without any script. */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  max-width: 960px;
+  margin: 0 auto 48px;
+}
+
+.site-header a {
+  text-decoration: none;
+}
+
+.site-name {
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 20px;
+}
+
+.site-header nav a {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.site-header nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+h1,
+h2 {
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+}
+
+section + section {
+  margin-top: 56px;
+}
+
+.section-intro {
+  max-width: 640px;
+  margin: -12px auto 20px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.story {
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.story p {
+  margin: 0;
+}
+
+.story p + p {
+  margin-top: 16px;
+}
+
+/* Name and short pitch at the top of the landing page. */
+.intro {
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.intro h1 {
+  margin-bottom: 16px;
+}
+
+.intro p {
+  margin: 0;
+}
+
+.intro p + p {
+  margin-top: 12px;
+}
+
+.skills {
+  margin: 0;
+}
+
+.skills dt {
+  font-weight: 600;
+}
+
+.skills dd {
+  margin: 2px 0 12px;
+  color: var(--muted);
+}
+
+/* chapter headings inside the story, smaller than the page heading */
+.story h2 {
+  margin: 40px 0 12px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.story h2:first-child {
+  margin-top: 0;
+}
+
+.story .story-next {
+  margin-top: 40px;
+  color: var(--muted);
+}
+
+/* centered as a block, with the rows left-aligned so labels line up */
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-label {
+  display: inline-block;
+  width: 5.5em;
+  color: var(--muted);
+}
+
+/* Resume: a slightly wider column than the story, with a rule under each
+   section heading like the printed version. */
+.resume {
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+.resume p {
+  margin: 0 0 12px;
+}
+
+.resume h2 {
+  margin: 36px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--tile-border);
+  font-size: 20px;
+  text-align: left;
+}
+
+.resume h3 {
+  margin: 24px 0 2px;
+  font-size: 17px;
+}
+
+.resume h4 {
+  margin: 16px 0 6px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.resume ul {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+.resume li + li {
+  margin-top: 6px;
+}
+
+.resume .resume-contact {
+  color: var(--muted);
+  text-align: center;
+}
+
+.resume .resume-meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.resume-lede {
+  font-style: italic;
+}
+
+/* default link blue is hard to read on the dark background */
+.intro a,
+.story a,
+.contact a,
+.resume a,
+.section-intro a {
+  color: inherit;
+  text-decoration-color: var(--muted);
+  text-underline-offset: 2px;
+}
+
+.intro a:hover,
+.story a:hover,
+.contact a:hover,
+.resume a:hover,
+.section-intro a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Readable line length for the prose list, while the tiles below use the
+   full width. */
+.looking-for {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-left: 1.5em;
+  line-height: 1.55;
+}
+
+.looking-for li + li {
+  margin-top: 12px;
+}
+
+.looking-for li::marker {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Fixed-size tiles that wrap and stay centered, including a partly
+   filled last row. */
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tile {
+  flex: 0 0 180px;
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--tile-border);
+  border-radius: 12px;
+  background: var(--tile-bg);
+}
+
+/* Faded app icon behind the tile's text, set per tile with --tile-image.
+   Tiny pixel-art favicons also set --tile-image-rendering: pixelated so
+   they scale up crisp instead of blurry. */
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 20%;
+  background: var(--tile-image, none) center / contain no-repeat;
+  image-rendering: var(--tile-image-rendering, auto);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* solid black icons would vanish on the dark background */
+@media (prefers-color-scheme: dark) {
+  .tile-icon-dark::before {
+    filter: invert(1);
+  }
+}
+
+.tile-face {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+  padding: 16px;
+  text-align: center;
+}
+
+.tile-name {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.tile-desc {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Each action is a transparent link covering part of the tile; its label
+   only appears while that part is hovered or focused. Public repos split
+   the tile into launch (top) and GitHub (bottom); private repos launch
+   from the whole tile, and repo-only tiles link to GitHub from the whole
+   tile. */
+.tile-action {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--overlay-text);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0;
+  background: var(--overlay);
+  transition: opacity 120ms ease;
+}
+
+.tile-action:hover,
+.tile-action:focus-visible {
+  opacity: 1;
+  outline: none;
+}
+
+.tile-launch {
+  top: 0;
+  bottom: 50%;
+}
+
+.tile-github {
+  top: 50%;
+  bottom: 0;
+}
+
+.tile-private .tile-launch {
+  bottom: 0;
+}
+
+/* no live app, just the code */
+.tile-repo-only .tile-github {
+  top: 0;
+}
+
+.tile-action svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Small corner hints for what a tile offers (launch, GitHub, or both),
+   hidden while the tile itself is hovered or focused since the full
+   labels take over then. */
+.tile-badges {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+  color: var(--muted);
+  transition: opacity 120ms ease;
+  pointer-events: none;
+}
+
+.tile-badges svg {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+}
+
+.tile:hover .tile-badges,
+.tile:focus-within .tile-badges {
+  opacity: 0;
+}
+
+/* Phones: two tiles per row instead of one oversized column. */
+@media (max-width: 440px) {
+  .tile {
+    flex-basis: calc(50% - 8px);
+  }
+}
+
+/* Touch screens can't hover, so keep both actions faintly visible. */
+@media (hover: none) {
+  .tile-action {
+    opacity: 0.55;
+  }
+
+  /* the labels are already showing */
+  .tile-badges {
+    display: none;
+  }
+}

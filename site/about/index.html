@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · Matt Love</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">Matt Love</a>
+    <nav>
+      <a href="/about/" aria-current="page">About</a>
+      <a href="/looking-for/">Looking for</a>
+      <a href="/">Projects</a>
+      <a href="/resume/">Resume</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>About</h1>
+
+    <div class="story">
+      <h2>NC State</h2>
+      <p>I studied Computer Science at NC State, graduating in 2014. My favorite classes were Operating Systems, Networks, and File Organization &amp; Processing: the courses about what's actually happening underneath the code. I also did undergraduate research for my Networks professor.</p>
+
+      <h2>Dell EMC · 2014–2021</h2>
+      <p>Those interests lined up well with Dell EMC, where I spent seven years building enterprise storage OS software in C89, on a mature, high-reliability codebase with tens of millions of lines of code.</p>
+      <p>The biggest project was NFSv4, which I helped take from greenfield to production as a core team member. I also scaled concurrent clients 4x, from 2,000 to 8,000 connections, by replacing a global-mutex linked list in the export authentication hot path with a per-entry-mutex hash table. I was also the branch keeper for the multi-year feature branch, keeping merges clean across the entire codebase.</p>
+      <p>I also developed a cross-platform SDK that shipped on Linux, AIX, HP-UX, Solaris, and Windows, which meant a lot of time in platform-specific code paths, per-OS build systems, and preprocessor macros. And I implemented a hot-swappable update system that patched tens of thousands of backup clients without reinstalling them: a small wrapper binary checks versions with the server and dynamically loads the implementation binary. Our principal architect filed a patent on the design, since granted as <a href="https://patents.google.com/patent/US10853094">US 10,853,094</a>.</p>
+      <p>Along the way I built developer tools that spread across the team on their own, like a multiplexed SSH session manager with a persistent daemon that could broadcast a command to many machines at once.</p>
+
+      <h2>Pendo · 2021–2026</h2>
+      <p>In 2021 I joined Pendo, moving from C to Go on Google Cloud. I started on the Enterprise &amp; Product-Led Growth team as the primary backend engineer for a full SCIM implementation with Okta, which let enterprise customers automate user provisioning. I also delivered a free trial product end to end, from tier enforcement on routes to gracefully deactivating features when a trial expired.</p>
+      <p>In 2022 I moved to Analytics, where I led backend development of a comprehensive reporting tool. I also added referential integrity across the platform, so shared resources like segments and metadata fields couldn't be deleted while reports, messaging rules, or other features still depended on them.</p>
+      <p>In 2023 I joined Guides, and within a year I was the sole backend engineer for two frontend teams and the go-to expert on guides backend systems. That included the guide delivery service, the platform's most trafficked endpoint, which evaluates each visitor's behavior against targeting rules in real time, in parallel across candidate guides, behind a three-tier cache. I fixed a multi-year bug that made translated guides return 403 errors by tracking down four separate failure modes, then audited the whole platform and repaired roughly 80,000 missing files across 10,000 guides without reprocessing any of them.</p>
+      <p>Guides was also where I got to build new things: A/B guide experiments with deterministic hash-based visitor assignment, a production RAG system that brings customers' knowledge bases into guide generation, and Guide AI Localization, a hackathon project that became a near-universally adopted feature.</p>
+      <p>In 2025 I moved to Platform Engineering and took ownership of the event ingestion pipeline and the jobs framework that every team's async work runs on. I automated a 5&ndash;6 hour manual data migration into a configuration-driven Airflow pipeline, using Claude Code from the technical spike through implementation while I focused on architecture, validation, and testing. I replaced another manual process, five endpoint calls plus a lot of log watching, with a durable state machine that shows its progress in the UI. And I profiled a Go event categorization algorithm with pprof against production data, which fixed a chronic SLA breach for a high-volume customer and improved throughput for everyone.</p>
+      <p>I was also a Tier 1 on-call engineer, and served as incident commander for a company-wide SEV0, leading a multi-day recovery across three engineering teams and building tooling to reconstruct each customer's state precisely.</p>
+      <p>The tools habit came with me from Dell EMC. At Pendo I built Postboy, a REST automation platform adopted across engineering: a Go scripting engine on top of GoLand's HTTP client, a Chrome extension that syncs session tokens into local env files, and a composable library for running request pipelines in parallel. A companion tool that statically analyzes the monorepo to generate a request file for every backend route won the CDO Innovation Award.</p>
+
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dt>Languages</dt>
+        <dd>Go, C/C89, Python, Bash, JavaScript</dd>
+        <dt>Infrastructure</dt>
+        <dd>GCP (Pub/Sub, Datastore/Firestore, GCS, Memorystore, Vertex AI, GKE, Cloud Composer), Kubernetes, Redis</dd>
+        <dt>Data &amp; pipelines</dt>
+        <dd>High-throughput event ingestion, distributed async processing, batch and streaming architectures, multi-tier caching, workflow orchestration (Airflow)</dd>
+        <dt>AI systems</dt>
+        <dd>LLM API integration, RAG system design, vector embeddings and ANN search (Vertex AI), workflow state management</dd>
+        <dt>Practices</dt>
+        <dd>Platform engineering, pipeline engineering, SLI/SLO design, incident command, performance profiling (pprof), distributed systems design, Agile/Scrum</dd>
+      </dl>
+
+      <p class="story-next">Next: <a href="/looking-for/">what I'm looking for</a>.</p>
+    </div>
+  </main>
+</body>
+</html>
