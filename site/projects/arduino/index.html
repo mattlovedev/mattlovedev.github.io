@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arduino · Matt Love</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">Matt Love</a>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/looking-for/">Looking for</a>
+      <a href="/projects/" aria-current="page">Projects</a>
+      <a href="/resume/">Resume</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <main class="project">
+    <p class="project-back"><a href="/projects/">&larr; All projects</a></p>
+
+    <h1>Arduino</h1>
+    <p class="project-tagline">Programs for LED matrix panels</p>
+
+    <p class="project-links">
+      <a class="button" href="https://github.com/mattlovedev/arduino">
+        <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+        GitHub
+      </a>
+    </p>
+
+    <div class="story">
+      <h2>Why I built it</h2>
+      <p>I've always been fascinated by programmable LEDs. This is a fun excuse to mess with simple hardware circuits, put my years of writing low-level C to use, and build physical desk art that sets my desk apart.</p>
+
+      <h2>What it does</h2>
+      <p>A collection of sketches for WS2812B LED matrix panels, chained or stacked into different sizes:</p>
+      <ul>
+        <li><strong>Snake</strong> that plays itself, rewritten over several versions. The latest adds an AI that avoids trapping itself.</li>
+        <li><strong>Game of Life</strong>, Conway's cellular automaton.</li>
+        <li><strong>Scrolling messages</strong>, a <strong>clock</strong>, pixel art, and a color test for checking new panels.</li>
+        <li><strong>Vitals</strong>, which streams my Old School RuneScape Hitpoints and Prayer onto the panels in real time as two fill bars, glowing white when boosted.</li>
+      </ul>
+
+      <h2>How it's built</h2>
+      <dl class="skills">
+        <dt>Code</dt>
+        <dd>Arduino C++ with the FastLED library, plus TimeLib for the clock. Vitals has three parts: a Java RuneLite plugin that reads the stats and sends them over UDP, a Python bridge that turns them into percentages and relays them over USB serial, and the sketch that draws the bars.</dd>
+        <dt>Hardware</dt>
+        <dd>An Arduino driving 8&times;32 WS2812B panels. Vitals runs on an Arduino Mega 2560 with two panels stacked into a 16&times;32 display.</dd>
+        <dt>Deploying</dt>
+        <dd>Sketches are compiled and flashed over USB with <code>arduino-cli</code>. There's nothing hosted.</dd>
+      </dl>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tracker · Matt Love</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">Matt Love</a>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/looking-for/">Looking for</a>
+      <a href="/projects/" aria-current="page">Projects</a>
+      <a href="/resume/">Resume</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <main class="project">
+    <p class="project-back"><a href="/projects/">&larr; All projects</a></p>
+
+    <h1>Tracker</h1>
+    <p class="project-tagline">Daily habit tracker</p>
+
+    <p class="project-links">
+      <a class="button" href="https://tracker.mattlove.dev">
+        <svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg>
+        Launch
+      </a>
+    </p>
+
+    <div class="story">
+      <h2>Why I built it</h2>
+      <p>I built it to track the things I do every day, good and bad, from habits I'm building to what I eat and spend. It holds me accountable while I build good habits, and gives me the data to show I'm making progress on ditching the bad ones.</p>
+      <p>It was also a way to get hands-on with Vue, Go and GCP. I was new to all three at work, and wanted a project of my own built on similar foundations.</p>
+
+      <h2>What it does</h2>
+      <p>Tracker has sections for daily habits, a weekly X effect checklist, goals, a budget, a food log and a journal. It sits behind a login, with sign-up turned off.</p>
+
+      <h2>How it's built</h2>
+      <dl class="skills">
+        <dt>Code</dt>
+        <dd>A Vue 3 single-page app, built with Vite and Vue Router, talking to a Go JSON API on gorilla/mux. A periodic job keeps goals up to date. The code is in a private repo.</dd>
+        <dt>Data</dt>
+        <dd>Firestore. Passwords are hashed with bcrypt, and sessions live in HttpOnly cookies.</dd>
+        <dt>Hosting</dt>
+        <dd>Google App Engine on the Go 1.26 runtime, serving both the API and the built client from the same origin at tracker.mattlove.dev.</dd>
+        <dt>Deploying</dt>
+        <dd>Shell scripts: one bundles the Go server and the built Vue client together, and another runs <code>gcloud app deploy</code> against a pinned project. Locally, Vite and air (hot-reloading the Go server) run side by side.</dd>
+      </dl>
+    </div>
+  </main>
+</body>
+</html>
